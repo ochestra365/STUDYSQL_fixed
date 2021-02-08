@@ -161,3 +161,10 @@ as
 	group by userID
 )
 select*from cte_tmp order by total desc;
+--update
+select*from testTbl1
+
+update testTbl1
+set userName='박성철',
+	age=30,
+where id=6;
