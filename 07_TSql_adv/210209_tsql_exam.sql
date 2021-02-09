@@ -52,3 +52,18 @@ select round(12314.435,-1);
 select round(rand()*100,-1);
 
 select iif(200>100, '참', '거짓');--활용 잘하면 매우 좋다.
+
+--문자열함수
+--많이 쓸 일이 없다.
+select ascii('a'), ascii('A');
+select char(98), char(66);
+select unicode('가') as '글자코드';
+select nchar(45909);
+
+--매우 많이 쓰이는 것들.
+--문자열 결합 함수
+select concat('Microsoft ','SQL', ' Server ',2019);--다 붙어서 나온다. 개수를 몇 개 넣어도 상관없다. 매우 편한 코드이다. 코딩량을 줄일 수 있다.
+--문자열의 시작위치 리턴
+select CHARINDEX('Server', 'SQL Server 2019');--모든 프로그램 언어들은 인덱스가 0부터 시작, 그러나 이것은 데이터베이스이다. 우리가 알고 있는 일반적인 언어와 차이가 있다.
+--left,right
+select left('SQL Server 2019', 3), right('SQL Server 2019',4);--필요한 글자를 출력하는 것. 정말 많이 쓰는 함수이다. 데이터베이스에만 존재한다. 다른언어에는 substring이라는 함수로 존재한다.
