@@ -67,3 +67,21 @@ select concat('Microsoft ','SQL', ' Server ',2019);--다 붙어서 나온다. �
 select CHARINDEX('Server', 'SQL Server 2019');--모든 프로그램 언어들은 인덱스가 0부터 시작, 그러나 이것은 데이터베이스이다. 우리가 알고 있는 일반적인 언어와 차이가 있다.
 --left,right
 select left('SQL Server 2019', 3), right('SQL Server 2019',4);--필요한 글자를 출력하는 것. 정말 많이 쓰는 함수이다. 데이터베이스에만 존재한다. 다른언어에는 substring이라는 함수로 존재한다.
+--substring(모든 언어에 다 있는 중요한 문자열 다루는 함수)
+select SUBSTRING('Hell World',7,5);
+select SUBSTRING('안녕하세요, sql서버입니다!',11,2);--1부터 세고 다른 언어는 0부터 센다. 데이터베이스만 그러하다. 데이터베이스랑 일반언어랑 다른 점은 무조건 존재한다.
+-- len
+select len('안녕하세요')as '열이름 개수', len('hello world!') as '열이름 개수';
+--lower, upper
+select lower('abcdeFG')as'소문자', upper('ASEdf')as'대문자';--필요할 때, 대소문자 비교를 안하기 위해서, 코드값은 전부 대문자로 쓴다. upper를 더 많이 쓰게 된다. 정말 많이 쓴다.
+--ltrim, rtrim
+select len(ltrim('   Hell World'   )),--좌측의 여백을 없애준다.
+		len(trim('   Hell World'   )),--모든 여백을 없애준다.
+		len(rtrim('  Hell World'   ));--우측의 여백을 없애준다.
+
+select REPLACE('SQL Server 2016', '2016','2019');--2016을 2019로 바꿔준다. 원하는 값으로 바꿔준다. 정말 많이 쓴다.
+select FORMAT(getdate(),'');--정말 많이 쓰인다.
+select FORMAT(getdate(),'dd/MM/yyyy');--외국은 포맷양식이 우리와 다르다.(국제적으로 일할 때는 다른 것이다.)
+select FORMAT(getdate(),'yyyy-MM-dd hh:mm:ss:ms');--우리나라 사람들이 가장 좋아하는 
+select FORMAT(getdate(),'yyyy-MM-dd');
+select FORMAT(getdate(),'hh:mm:ss');
