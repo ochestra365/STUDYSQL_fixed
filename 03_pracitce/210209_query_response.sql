@@ -36,4 +36,3 @@ select distinct addr from userTBL_practice;--중복값을 삭제한다.
 --top(0.1) percent는 상위 건수의 0.1%만 검색하겠다는 의미이다. 또한 top(%) percent with ties는 N%가 넘더라도 출력하는 것을 말한다.
 --샘플링 데이터의 몇 퍼센트를 출력할 것이냐를 알아보는 구문이다.
 go
-select * into 

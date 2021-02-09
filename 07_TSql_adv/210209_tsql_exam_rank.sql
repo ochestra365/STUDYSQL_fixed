@@ -35,6 +35,7 @@ select * from pivotTBL
 		--세로로 나온 데이터를 통계를 내면서 가로로 나오게 하는 것이다.
 
 --json
-select userName, height
+select userID, userName, height, addr
 	from userTbl
+	where height >=180
 	for json auto;
