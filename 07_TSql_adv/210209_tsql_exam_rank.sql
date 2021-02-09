@@ -33,3 +33,8 @@ select * from pivotTBL
 		for season
 		in ([봄],[여름],[가을],[겨울])) as resultPivot;
 		--세로로 나온 데이터를 통계를 내면서 가로로 나오게 하는 것이다.
+
+--json
+select userName, height
+	from userTbl
+	for json auto;
