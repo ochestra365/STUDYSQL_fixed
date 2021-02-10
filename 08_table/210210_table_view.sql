@@ -7,9 +7,9 @@
 use tempdb;
 go
 /*
-drop database tableDB;
+drop database tableDB;*/
 go
-create database tableDB;*/
+create database tableDB;
 use tableDB;
 go
 --drop table buyTBL;
