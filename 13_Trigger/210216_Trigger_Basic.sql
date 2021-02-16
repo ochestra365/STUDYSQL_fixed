@@ -1,13 +1,13 @@
-USE sqlDB;
+ï»¿USE sqlDB;
 GO
 
-CREATE or ALTER TRIGGER trg_testTBL--¼öÁ¤°ú Ã¢Á¶¸¦ µ¿½Ã¿¡ ÇÏ´Â °Çµ¥, Á¶½ÉÈ÷ ½á¾ßÇÔ. ¹Ì¸® ÀÖ´Â Æ®¸®°Å¸¦ ´Ù Áö¿ö ¹ö¸± ¼öµµ ÀÖÀ½.
+CREATE or ALTER TRIGGER trg_testTBL--ìˆ˜ì •ê³¼ ì°½ì¡°ë¥¼ ë™ì‹œì— í•˜ëŠ” ê±´ë°, ì¡°ì‹¬ížˆ ì¨ì•¼í•¨. ë¯¸ë¦¬ ìžˆëŠ” íŠ¸ë¦¬ê±°ë¥¼ ë‹¤ ì§€ì›Œ ë²„ë¦´ ìˆ˜ë„ ìžˆìŒ.
 on testTBL
-AFTER INSERT, DELETE, UPDATE--»èÁ¦, ¼öÁ¤ÇÒ ¶§ Æ®¸®°Å°¡ ¹ß»ýÇÑ´Ù.
+AFTER INSERT, DELETE, UPDATE--ì‚­ì œ, ìˆ˜ì •í•  ë•Œ íŠ¸ë¦¬ê±°ê°€ ë°œìƒí•œë‹¤.
 AS
- PRINT '»õÆ®¸®°Å ¹ß»ý';--Æ®¸®°Å ¹ß»ýÇÏ´Â Á¶°ÇÀ» Àû´Â ÀýÀÌ´Ù.
+ PRINT 'ìƒˆíŠ¸ë¦¬ê±° ë°œìƒ';--íŠ¸ë¦¬ê±° ë°œìƒí•˜ëŠ” ì¡°ê±´ì„ ì ëŠ” ì ˆì´ë‹¤.
 
  INSERT INTO testTBL VALUES('BTS');
- SELECT *FROM testTBL WHERE txt='¸¶¸¶¹«';
- UPDATE testTBL set TXT = '¸¶¸¶¹«´º!' WHERE id=4;
+ SELECT *FROM testTBL WHERE txt='ë§ˆë§ˆë¬´';
+ UPDATE testTBL set TXT = 'ë§ˆë§ˆë¬´ë‰´!' WHERE id=4;
  DELETE testTBL WHERE id=3;
