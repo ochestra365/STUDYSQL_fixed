@@ -1,0 +1,6 @@
+select u.userid, u.username, u.birthyear,u.addr, u.height,b.prodName,b.price
+from userTbl as u
+inner join buytbl as b 
+on u.userid=b.userid
+where height>170 
+for xml auto;
