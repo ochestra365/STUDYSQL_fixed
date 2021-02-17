@@ -83,8 +83,18 @@ SELECT r.rentalidx
       ,r.rentalState
 	  ,dbo.ufn_getstate(r.rentalState) as '대여상태'
   FROM  dbo. rentalTBl as r
-  inner join booksTBL as b
+   left outer join booksTBL as b
 	on r.bookidx=b.bookidx
-  inner join membertbl as m
-  on r.memberidx=m.memberidx;
+  right outer join membertbl as m
+  on r.memberidx=m.memberidx
+  
+  where r.rentalIdx is null;--null의값을 비교할 때는 is null로 한다. left right는 기준을 잡는 것이고, inner는 조건을 해당하는 집합(교집합), outer는 조건에 해당하지 않는 집합(여집합)
 GO
+
+--우리 책대여점에 없는 소설장르
+select c.cateidx
+	, c.cateName
+	, b.bookname
+	from cateTBL as c
+	left outer join booksTBL as b
+	on c.cateidx=b.cateidx
