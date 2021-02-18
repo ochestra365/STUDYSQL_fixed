@@ -1,17 +1,17 @@
-create or alter function dbo.ufn_getLevel(@levels char(1))
+ï»¿create or alter function dbo.ufn_getLevel(@levels char(1))
 returns nvarchar(5)
 as
 begin
-	declare @result nvarchar(5);--°ñµåÈ¸¿ø, ½Ç¹öÈ¸¿ø, ºê·ĞÁîÈ¸¿ø, Ã¶È¸¿ø µî º¯¼ö
+	declare @result nvarchar(5);--ê³¨ë“œíšŒì›, ì‹¤ë²„íšŒì›, ë¸Œë¡ ì¦ˆíšŒì›, ì² íšŒì› ë“± ë³€ìˆ˜
 
 	 set @result= case @levels 
-					when 'A' then '°ñµåÈ¸¿ø'
-					when 'B' then '½Ç¹öÈ¸¿ø'
-					when 'C' then 'ºê·ĞÁîÈ¸¿ø'
-					when 'D' then 'Ã¶È¸¿ø'
-					when 'S' then '°ü¸®ÀÚ'
-					else 'ºñÈ¸¿ø'
+					when 'A' then 'ê³¨ë“œíšŒì›'
+					when 'B' then 'ì‹¤ë²„íšŒì›'
+					when 'C' then 'ë¸Œë¡ ì¦ˆíšŒì›'
+					when 'D' then 'ì² íšŒì›'
+					when 'S' then 'ê´€ë¦¬ì'
+					else 'ë¹„íšŒì›'
 					end;
 		return @result;
 	end
-go--»õÄõ¸®·Î ÇÏ¸é ¸í·ÉÀÌ ½ÇÇàµÈ´Ù.
+go--ìƒˆì¿¼ë¦¬ë¡œ í•˜ë©´ ëª…ë ¹ì´ ì‹¤í–‰ëœë‹¤.

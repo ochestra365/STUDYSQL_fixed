@@ -1,10 +1,10 @@
--- ½ÇÁ¦ È¸¿ø Á¤º¸ ºÒ·¯¿À±â ·¹º§ °Å²Ù·Î, ÀÌ¸§¼ø
+ï»¿-- ì‹¤ì œ íšŒì› ì •ë³´ ë¶ˆëŸ¬ì˜¤ê¸° ë ˆë²¨ ê±°ê¾¸ë¡œ, ì´ë¦„ìˆœ
 select memberID, memberName, levels, mobile,email
 	from memberTBL
 where levels <> 'S'
 order by levels asc, memberName asc;
 
---Ã¥Á¤º¸
+--ì±…ì •ë³´
 select cateidx, bookname, author, 
 	   interpreter, company, price
 	from booksTBL
@@ -12,50 +12,50 @@ order by price desc;
 
 select*from cateTBL;
 
---½Ã½ºÅÛ ÇÔ¼ö»ç¿ë Äõ¸®
-select memberID as 'È¸¿ø ¾ÆÀÌµğ', 
-	   concat (right(memberName,2), left(membername,1)) as ÀÌ¸§,
+--ì‹œìŠ¤í…œ í•¨ìˆ˜ì‚¬ìš© ì¿¼ë¦¬
+select memberID as 'íšŒì› ì•„ì´ë””', 
+	   concat (right(memberName,2), left(membername,1)) as ì´ë¦„,
 	   case levels 
-			when 'A' then '°ñµåÈ¸¿ø'
-			when 'B' then '½Ç¹öÈ¸¿ø'
-			when 'C' then 'ºê·ĞÁîÈ¸¿ø'
-			when 'D' then 'Ã¶È¸¿ø'
-			when 'S' then '°ü¸®ÀÚ'
-			else 'ºñÈ¸¿ø'
-	   end as 'È¸¿ø·¹º§'
+			when 'A' then 'ê³¨ë“œíšŒì›'
+			when 'B' then 'ì‹¤ë²„íšŒì›'
+			when 'C' then 'ë¸Œë¡ ì¦ˆíšŒì›'
+			when 'D' then 'ì² íšŒì›'
+			when 'S' then 'ê´€ë¦¬ì'
+			else 'ë¹„íšŒì›'
+	   end as 'íšŒì›ë ˆë²¨'
 	   , 
-	   mobile as ÀüÈ­¹øÈ£,
-	   upper(email) as 'ÀÌ¸ŞÀÏ'
+	   mobile as ì „í™”ë²ˆí˜¸,
+	   upper(email) as 'ì´ë©”ì¼'
 	from memberTBL
 where levels <> 'S'
 order by levels, memberName asc;
---¾Æ·¡ÀÇ ÇÔ¼ö¸¦ »ç¿ëÀÚ Á¤ÀÇ ÇÔ¼ö·Î ¸¸µé °ÍÀÌ´Ù.
+--ì•„ë˜ì˜ í•¨ìˆ˜ë¥¼ ì‚¬ìš©ì ì •ì˜ í•¨ìˆ˜ë¡œ ë§Œë“¤ ê²ƒì´ë‹¤.
 
 
 
---»ç¿ëÀÚ Á¤ÀÇ ÇÔ¼ö»ç¿ë Äõ¸®
+--ì‚¬ìš©ì ì •ì˜ í•¨ìˆ˜ì‚¬ìš© ì¿¼ë¦¬
 
-select memberID as 'È¸¿ø ¾ÆÀÌµğ', 
-	   concat (right(memberName,2), left(membername,1)) as ÀÌ¸§,
-	   dbo.ufn_getLevel(levels)as 'È¸¿ø·¹º§',mobile ,
-	   UPPER(email) as 'ÀÌ¸ŞÀÏ'
+select memberID as 'íšŒì› ì•„ì´ë””', 
+	   concat (right(memberName,2), left(membername,1)) as ì´ë¦„,
+	   dbo.ufn_getLevel(levels)as 'íšŒì›ë ˆë²¨',mobile ,
+	   UPPER(email) as 'ì´ë©”ì¼'
 	from memberTBL
 where levels <> 'S'
 order by levels, memberName asc;
 
---Ã¥ Á¤º¸, ½Ã½ºÅÛ ÇÔ¼ö, Æ÷¸Ë ÇÔ¼ö Äõ¸®
+--ì±… ì •ë³´, ì‹œìŠ¤í…œ í•¨ìˆ˜, í¬ë§· í•¨ìˆ˜ ì¿¼ë¦¬
 select 
-	 bookidx  'Ã¥ °íÀ¯¹øÈ£' 
-	,cateidx as 'Ä«Å×°í¸®'
-	,concat(N'Ã¥Á¦¸ñ>',bookname) as 'Ã¥ ÀÌ¸§'  
-	,author as ÀÛ°¡
-	,isnull(interpreter,'(¿ªÀÚ¾øÀ½)')  as '¹ø¿ª°¡'
-	,company as È¸»ç
-	,format(releaseDate,'yyyy³â MM¿ù ddÀÏ' ) as 'ÃâÆÇÀÏ'
-	,format(price,'#,#¿ø') as '°¡°İ'
+	 bookidx  'ì±… ê³ ìœ ë²ˆí˜¸' 
+	,cateidx as 'ì¹´í…Œê³ ë¦¬'
+	,concat(N'ì±…ì œëª©>',bookname) as 'ì±… ì´ë¦„'  
+	,author as ì‘ê°€
+	,isnull(interpreter,'(ì—­ìì—†ìŒ)')  as 'ë²ˆì—­ê°€'
+	,company as íšŒì‚¬
+	,format(releaseDate,'yyyyë…„ MMì›” ddì¼' ) as 'ì¶œíŒì¼'
+	,format(price,'#,#ì›') as 'ê°€ê²©'
 from booksTBL;
 
---Ã¥Á¤º¸ Á¶ÀÎ
+--ì±…ì •ë³´ ì¡°ì¸
 select 
 	 b.bookidx 
 	--,b.cateidx
@@ -68,7 +68,7 @@ from booksTBL as b
 inner join cateTBL as c
 	on b.cateidx=c.cateidx;
 
--- ´ë¿©µÈ Ã¥ÀÇ Á¤º¸ Äõ¸® Á¶ÀÎ
+-- ëŒ€ì—¬ëœ ì±…ì˜ ì •ë³´ ì¿¼ë¦¬ ì¡°ì¸
 USE  BookRentalShopDB
 GO
 
@@ -78,23 +78,22 @@ SELECT r.rentalidx
 	 ,m.memberidx
 	  ,b.bookname
 	  ,b.author
-      ,format(r.rentalDt,'yyyy-mm-dd') as '´ë¿©ÀÏ'
-      ,format(r.returnDt,'yyyy-mm-dd')as '¹İ³³ÀÏ'
+      ,format(r.rentalDt,'yyyy-mm-dd') as 'ëŒ€ì—¬ì¼'
+      ,format(r.returnDt,'yyyy-mm-dd')as 'ë°˜ë‚©ì¼'
       ,r.rentalState
-	  ,dbo.ufn_getstate(r.rentalState) as '´ë¿©»óÅÂ'
+	  ,dbo.ufn_getstate(r.rentalState) as 'ëŒ€ì—¬ìƒíƒœ'
   FROM  dbo. rentalTBl as r
    left outer join booksTBL as b
 	on r.bookidx=b.bookidx
   right outer join membertbl as m
   on r.memberidx=m.memberidx
   
-  where r.rentalIdx is null;--nullÀÇ°ªÀ» ºñ±³ÇÒ ¶§´Â is null·Î ÇÑ´Ù. left right´Â ±âÁØÀ» Àâ´Â °ÍÀÌ°í, inner´Â Á¶°ÇÀ» ÇØ´çÇÏ´Â ÁıÇÕ(±³ÁıÇÕ), outer´Â Á¶°Ç¿¡ ÇØ´çÇÏÁö ¾Ê´Â ÁıÇÕ(¿©ÁıÇÕ)
+  where r.rentalIdx is null;--nullì˜ê°’ì„ ë¹„êµí•  ë•ŒëŠ” is nullë¡œ í•œë‹¤. left rightëŠ” ê¸°ì¤€ì„ ì¡ëŠ” ê²ƒì´ê³ , innerëŠ” ì¡°ê±´ì„ í•´ë‹¹í•˜ëŠ” ì§‘í•©(êµì§‘í•©), outerëŠ” ì¡°ê±´ì— í•´ë‹¹í•˜ì§€ ì•ŠëŠ” ì§‘í•©(ì—¬ì§‘í•©)
 GO
 
---¿ì¸® Ã¥´ë¿©Á¡¿¡ ¾ø´Â ¼Ò¼³Àå¸£
+--ìš°ë¦¬ ì±…ëŒ€ì—¬ì ì— ì—†ëŠ” ì†Œì„¤ì¥ë¥´
 select c.cateidx
 	, c.cateName
 	, b.bookname
-	from cateTBL as c
-	left outer join booksTBL as b
+	from cateTBL as c right outer join booksTBL as b
 	on c.cateidx=b.cateidx
